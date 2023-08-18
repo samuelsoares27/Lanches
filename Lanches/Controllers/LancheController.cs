@@ -12,7 +12,12 @@ namespace Lanches.Controllers
         }
         public IActionResult List()
         {
+            ViewData["Titulo"] = "Todos os Lanches";
+            ViewData["Data"] = DateTime.Now;
             var lanches = _lancheRepository.Lanches;
+            var TotalLanches = lanches.Count();
+            ViewBag.TotalLanches = $"Total de Lanches: {TotalLanches}";
+            
             return View(lanches);
         }
     }
